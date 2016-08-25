@@ -1,6 +1,6 @@
 package com.johnckeyes.kotlinkoans
 
-import org.junit.Assert.assertEquals
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 
 class Thing {
@@ -15,7 +15,7 @@ open class BaseThing() {
     fun value() = "base"
 }
 
-class InheritedThing: BaseThing() {
+class InheritedThing : BaseThing() {
 }
 
 class Classes {
@@ -23,7 +23,7 @@ class Classes {
     @Test
     fun thing() {
         val thing = Thing()
-        assertEquals(thing.value(), "something")
+        assertThat(thing.value()).isEqualTo("something")
     }
 
     @Test
@@ -31,8 +31,8 @@ class Classes {
         val bigThing = ComplexThing("big")
         val smallThing = ComplexThing("small")
 
-        assertEquals(bigThing.name, "a big thing")
-        assertEquals(smallThing.name, "a small thing")
+        assertThat(bigThing.name).isEqualTo("a big thing")
+        assertThat(smallThing.name).isEqualTo("a small thing")
     }
 
     @Test
@@ -40,6 +40,7 @@ class Classes {
         val baseThing = BaseThing()
         val inheritedThing = InheritedThing()
 
-        assertEquals(baseThing.value(), inheritedThing.value())
+        assertThat(inheritedThing.value()).isEqualTo(baseThing.value())
+        assertThat(inheritedThing).isInstanceOf(BaseThing::class.java)
     }
 }

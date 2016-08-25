@@ -1,6 +1,6 @@
 package com.johnckeyes.kotlinkoans
 
-import org.junit.Assert.assertEquals
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 
 /**
@@ -54,24 +54,34 @@ class FunctionDeclarations {
 
     @Test
     fun callStringMethod() {
-        assertEquals(stringMethod(), "something")
+        val result = stringMethod()
+        assertThat(result).isEqualTo("something")
     }
 
     @Test
     fun callDefaultParameters() {
-        assertEquals(defaultParameters(), "something")
-        assertEquals(defaultParameters("something else"), "something else")
+        val one = defaultParameters()
+        assertThat(one).isEqualTo("something")
+
+        val two = defaultParameters("something else")
+        assertThat(two).isEqualTo("something else")
     }
 
     @Test
     fun callNamedParameters() {
-        assertEquals(namedParameters("A", "B"), "AB")
-        assertEquals(namedParameters(first = "A", second = "B"), "AB")
-        assertEquals(namedParameters(second = "B", first = "A"), "AB")
+        val one = namedParameters("A", "B")
+        assertThat(one).isEqualTo("AB")
+
+        val two = namedParameters(first = "A", second = "B")
+        assertThat(two).isEqualTo("AB")
+
+        val three = namedParameters(second = "B", first = "A")
+        assertThat(three).isEqualTo("AB")
     }
 
     @Test
     fun callInlineMethod() {
-        assertEquals(inlineMethod(1, 2, 3), 36)
+        val result = inlineMethod(1, 2, 3)
+        assertThat(result).isEqualTo(36)
     }
 }

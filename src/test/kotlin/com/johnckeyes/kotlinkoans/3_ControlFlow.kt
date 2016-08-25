@@ -1,6 +1,6 @@
 package com.johnckeyes.kotlinkoans
 
-import org.junit.Assert.assertEquals
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 
 class ControlFlow {
@@ -14,7 +14,7 @@ class ControlFlow {
         val itIsTrue = true
         val value = if (itIsTrue) 100 else 200
 
-        assertEquals(value, 100)
+        assertThat(value).isEqualTo(100)
     }
 
     /**
@@ -32,7 +32,7 @@ class ControlFlow {
             300
         }
 
-        assertEquals(value, 200)
+        assertThat(value).isEqualTo(200)
     }
 
     /**
@@ -49,7 +49,7 @@ class ControlFlow {
             else -> result = "c"
         }
 
-        assertEquals(result, "b")
+        assertThat(result).isEqualTo("b")
     }
 
     /**
@@ -59,11 +59,11 @@ class ControlFlow {
     fun whenAssignment() {
         val num = 5
         val result = when (num) {
-            1 ->  "a"
-            5 ->  "b"
-            else ->  "c"
+            1 -> "a"
+            5 -> "b"
+            else -> "c"
         }
 
-        assertEquals(result, "b")
+        assertThat(result).isEqualTo("b")
     }
 }

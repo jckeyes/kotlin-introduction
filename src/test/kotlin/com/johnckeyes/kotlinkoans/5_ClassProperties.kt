@@ -1,9 +1,7 @@
 package com.johnckeyes.kotlinkoans
 
-import org.junit.Assert.assertEquals
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
-
-class InlineProperty(val name: String, val size: Int)
 
 class GettersAndSetters() {
 
@@ -19,17 +17,21 @@ class GettersAndSetters() {
         get() = "A thing named $_name"
 }
 
+class InlineProperty(val name: String, val size: Int)
+
+data class DataClass(val name: String, val size: Int)
+
 class ClassProperties {
 
     @Test
     fun inlineProperties() {
         val thing = InlineProperty("thing", 100)
-        assertEquals(thing.name, "thing")
-        assertEquals(thing.size, 100)
+        assertThat(thing.name).isEqualTo("thing")
+        assertThat(thing.size).isEqualTo(100)
 
         val thing2 = InlineProperty(size = 200, name = "thing2")
-        assertEquals(thing2.name, "thing2")
-        assertEquals(thing2.size, 200)
+        assertThat(thing2.name).isEqualTo("thing2")
+        assertThat(thing2.size).isEqualTo(200)
     }
 
     @Test
@@ -38,7 +40,21 @@ class ClassProperties {
 
         thing.name = "Jeff"
 
-        assertEquals(thing.name, "Jeff")
-        assertEquals(thing.description, "A thing named Jeff")
+        assertThat(thing.name).isEqualTo("Jeff")
+        assertThat(thing.description).isEqualTo("A thing named Jeff")
+    }
+
+    @Test
+    fun dataClass() {
+        val nonDataClass1 = InlineProperty("a", 1)
+        val nonDataClass2 = InlineProperty("a", 1)
+        assertThat(nonDataClass1).isNotEqualTo(nonDataClass2)
+
+        val dataClass1 = DataClass("b", 2)
+        val dataClass2 = DataClass("b", 2)
+        assertThat(dataClass1).isEqualTo(dataClass2)
+
+        println(nonDataClass1)
+        println(dataClass1)
     }
 }
