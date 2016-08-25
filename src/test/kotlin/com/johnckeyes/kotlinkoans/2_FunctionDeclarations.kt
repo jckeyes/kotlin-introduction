@@ -42,7 +42,7 @@ fun namedParameters(first: String, second: String): String {
 /**
  * Method bodies can be written inline if they are a single expression
  */
-fun inlineMethod(vararg list: Int) = list.reduce { a, b -> a + b }
+fun inlineMethod(vararg list: Int) = list.map { it + 10 }.sum()
 
 class FunctionDeclarations {
 
@@ -72,6 +72,6 @@ class FunctionDeclarations {
 
     @Test
     fun callInlineMethod() {
-        assertEquals(inlineMethod(1, 2, 3), 6)
+        assertEquals(inlineMethod(1, 2, 3), 36)
     }
 }
