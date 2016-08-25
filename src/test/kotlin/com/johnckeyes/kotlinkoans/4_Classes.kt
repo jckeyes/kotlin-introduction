@@ -8,10 +8,14 @@ class Thing {
 }
 
 class ComplexThing(adjective: String) {
+
+    constructor(adjectiveOne: String, adjectiveTwo: String)
+        : this("$adjectiveOne $adjectiveTwo")
+
     val name = "a $adjective thing"
 }
 
-open class BaseThing() {
+open class BaseThing {
     fun value() = "base"
 }
 
@@ -29,10 +33,13 @@ class Classes {
     @Test
     fun complexThing() {
         val bigThing = ComplexThing("big")
-        val smallThing = ComplexThing("small")
-
         assertThat(bigThing.name).isEqualTo("a big thing")
+
+        val smallThing = ComplexThing("small")
         assertThat(smallThing.name).isEqualTo("a small thing")
+
+        val veryTinyThing = ComplexThing("very", "tiny")
+        assertThat(veryTinyThing.name).isEqualTo("a very tiny thing")
     }
 
     @Test
