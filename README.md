@@ -1,5 +1,4 @@
 # Kotlin
-
 Kotlin is a statically type language on the JVM.
 
 ## Similarities to Java
@@ -9,7 +8,7 @@ Statically typed
 Runs on JVM, Java interoperability, Support for high order functions and closures
 
 ## Similarities to Scala
-Large set of functional features
+Functional programming aspects
 
 ## Similarities to Swift
-Optionality, Syntax
+Optionality, concise syntax
