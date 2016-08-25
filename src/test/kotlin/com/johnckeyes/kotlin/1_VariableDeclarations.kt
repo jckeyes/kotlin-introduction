@@ -37,9 +37,9 @@ class VariableDeclarations {
     val nullValue: String? = null
 
     /**
-     * Values are required for all variables (event null values) in Kotlin. The only exception is when
-     * a variable is marked as 'lateinit'. The primary use for this for IOC frameworks like Spring. Lateinit values
-     * must be declared as 'var'.
+     * Values are required for all variables (even null values) in Kotlin. The only exception is when
+     * a variable is marked as 'lateinit'. Perhaps the best use for this is IOC frameworks, like Spring.
+     * Lateinit value must be declared as 'var'.
      *
      * Java: Date lateDate;
      */
