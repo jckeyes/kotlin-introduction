@@ -36,5 +36,4 @@ class Collections {
         val map = mutableMapOf("one" to 1, "two" to 2, "three" to 3)
         assertThat(map["one"]).isEqualTo(1)
     }
-
 }
