@@ -1,4 +1,4 @@
-package com.johnckeyes.kotlinkoans
+package com.johnckeyes.kotlin
 
 import java.util.*
 
