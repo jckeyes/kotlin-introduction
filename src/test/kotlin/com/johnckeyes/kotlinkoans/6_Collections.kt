@@ -20,5 +20,21 @@ class Collections {
         assertThat(list).hasSize(4)
     }
 
+    @Test
+    fun mapReduce() {
+        val list = listOf("a", "big", "fish")
+        val sentence = list.map { "$it " }.reduce { a, b -> a + b }.trim()
+
+        assertThat(sentence).isEqualTo("a big fish")
+    }
+
+    @Test
+    fun otherCollections() {
+        val set = setOf(1, 2, 3)
+        assertThat(set).hasSize(3)
+
+        val map = mutableMapOf("one" to 1, "two" to 2, "three" to 3)
+        assertThat(map["one"]).isEqualTo(1)
+    }
 
 }
