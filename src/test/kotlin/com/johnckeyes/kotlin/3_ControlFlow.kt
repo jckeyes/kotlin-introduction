@@ -17,6 +17,9 @@ class ControlFlow {
         assertThat(value).isEqualTo(100)
     }
 
+
+
+
     /**
      * Conditional assignments can be as complex as traditional if statements
      */
@@ -35,6 +38,9 @@ class ControlFlow {
         assertThat(value).isEqualTo(200)
     }
 
+
+
+
     /**
      * When expressions are similar to switch statements in other languages
      */
@@ -51,6 +57,9 @@ class ControlFlow {
 
         assertThat(result).isEqualTo("b")
     }
+
+
+
 
     /**
      * Similar to ifs, whens can be used in assignments

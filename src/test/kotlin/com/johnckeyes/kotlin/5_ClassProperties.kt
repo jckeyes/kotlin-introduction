@@ -3,25 +3,45 @@ package com.johnckeyes.kotlin
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 
-class GettersAndSetters() {
-
-    var _name: String = ""
-
-    var name: String
-        get() = _name
-        set(value) {
-            _name = value
-        }
-
-    val description: String
-        get() = "A thing named $_name"
-}
-
-class InlineProperty(val name: String, val size: Int)
-
-data class DataClass(val name: String, val size: Int)
-
 class ClassProperties {
+
+    /**
+     * Kotlin has full support for property getters and setters.
+     * Very similar to C#. No thanks to Java.
+     */
+    class GettersAndSetters() {
+
+        var _name: String = ""
+
+        var name: String
+            get() = _name
+            set(value) {
+                _name = value
+            }
+
+        val description: String
+            get() = "A thing named $_name"
+    }
+
+    @Test
+    fun gettersAndSetters() {
+        val thing = GettersAndSetters()
+
+        thing.name = "Jeff"
+
+        assertThat(thing.name).isEqualTo("Jeff")
+        assertThat(thing.description).isEqualTo("A thing named Jeff")
+    }
+
+
+
+
+    /**
+     * If val or var is specified in the default constructor of a class, kotlin will
+     * automatically create a class level property for it. In this case, the class
+     * does not even require a body.
+     */
+    class InlineProperty(val name: String, val size: Int)
 
     @Test
     fun inlineProperties() {
@@ -34,15 +54,14 @@ class ClassProperties {
         assertThat(thing2.size).isEqualTo(200)
     }
 
-    @Test
-    fun gettersAndSetters() {
-        val thing = GettersAndSetters()
 
-        thing.name = "Jeff"
 
-        assertThat(thing.name).isEqualTo("Jeff")
-        assertThat(thing.description).isEqualTo("A thing named Jeff")
-    }
+
+    /**
+     * If a class is marked as a data class, Kotlin will also generate equals, hashcode, toString, and
+     * copy functions for that class.
+     */
+    data class DataClass(val name: String, val size: Int)
 
     @Test
     fun dataClass() {

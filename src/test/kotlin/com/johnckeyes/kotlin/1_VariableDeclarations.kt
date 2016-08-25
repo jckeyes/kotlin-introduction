@@ -12,6 +12,9 @@ class VariableDeclarations {
      */
     val immutableVariable: String = "nope"
 
+
+
+
     /**
      * Using the keyword 'var' declares a variable as mutable. It can be changed
      * at any point. It can not be null, however.
@@ -19,6 +22,9 @@ class VariableDeclarations {
      * Java: String mutableVariable = "yep";
      */
     var mutableVariable: String = "yep"
+
+
+
 
     /**
      * The type declaration at the end of a variable is not required if the compiler
@@ -28,6 +34,9 @@ class VariableDeclarations {
      */
     val impliedTyped = 100
 
+
+
+
     /**
      * Variables are not nullable by default. To make a variable nullable a ? is added to the
      * type declaration. Similar to swift
@@ -35,6 +44,9 @@ class VariableDeclarations {
      * Java: String nullValue;
      */
     val nullValue: String? = null
+
+
+
 
     /**
      * Values are required for all variables (even null values) in Kotlin. The only exception is when
@@ -44,6 +56,9 @@ class VariableDeclarations {
      * Java: Date lateDate;
      */
     lateinit var lateDate: Date
+
+
+
 
     /**
      * Kotlin supports the boxing/unboxing of primitives by making the value optional (?)

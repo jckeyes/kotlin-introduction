@@ -12,6 +12,9 @@ class FunctionDeclarations {
         assertThat(true).isTrue()
     }
 
+
+
+
     /**
      * Similar to variables, parameters types are declared after the param name
      */
@@ -25,6 +28,9 @@ class FunctionDeclarations {
         voidMethod("foo")
     }
 
+
+
+
     /**
      * Similar to variables, method types are declared after the method name
      */
@@ -37,6 +43,9 @@ class FunctionDeclarations {
         val result = stringMethod()
         assertThat(result).isEqualTo("something")
     }
+
+
+
 
     /**
      * Parameters can be give default values.
@@ -53,6 +62,9 @@ class FunctionDeclarations {
         val two = defaultParameters("something else")
         assertThat(two).isEqualTo("something else")
     }
+
+
+
 
     /**
      * When a method is called, parameters can be specified by name
@@ -73,6 +85,9 @@ class FunctionDeclarations {
         val three = namedParameters(second = "B", first = "A")
         assertThat(three).isEqualTo("AB")
     }
+
+
+
 
     /**
      * Method bodies can be written inline if they are a single expression
