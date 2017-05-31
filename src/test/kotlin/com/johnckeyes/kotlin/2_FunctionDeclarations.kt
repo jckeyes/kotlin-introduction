@@ -99,4 +99,22 @@ class FunctionDeclarations {
         val result = singleExpressionMethod(1, 2, 3)
         assertThat(result).isEqualTo(36)
     }
+
+
+    /**
+     * Functions can have other functions nested inside them to encapsulate logic
+     * Inner functions have access to variables from the outer function
+     */
+    fun outerFunction(message: String) : String{
+        fun innerFunction(punctuation: Char): String {
+            return "$message$punctuation"
+        }
+        return "${innerFunction('?')} ${innerFunction('!')}"
+    }
+
+    @Test
+    fun callInnerFunction() {
+        val result = outerFunction("Kotlin")
+        assertThat(result).isEqualTo("Kotlin? Kotlin!")
+    }
 }
