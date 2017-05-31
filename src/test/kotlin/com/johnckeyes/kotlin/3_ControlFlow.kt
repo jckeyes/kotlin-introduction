@@ -10,7 +10,7 @@ class ControlFlow {
      * can be used to assign variables
      */
     @Test
-    fun conditionalAssignment() {
+    fun `conditional assignment`() {
         val itIsTrue = true
         val value = if (itIsTrue) 100 else 200
 
@@ -24,7 +24,7 @@ class ControlFlow {
      * Conditional assignments can be as complex as traditional if statements
      */
     @Test
-    fun complexConditionalAssignment() {
+    fun `complex conditional assignment`() {
         val itIsTrue = true
         val itIsFalse = false
         val value = if (itIsFalse) {
@@ -45,7 +45,7 @@ class ControlFlow {
      * When expressions are similar to switch statements in other languages
      */
     @Test
-    fun whenExpression() {
+    fun `when expression`() {
         val num = 5
         var result = ""
 

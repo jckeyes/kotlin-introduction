@@ -22,8 +22,12 @@ class FunctionDeclarations {
         assertThat(param).isNotNull()
     }
 
+    /**
+     * You can include spaces in method names if you quote them with backticks
+     * This is very nice for tests (but should probably only be used there)
+     */
     @Test
-    fun callVoidMethod() {
+    fun `call void method`() {
         voidMethod()
         voidMethod("foo")
     }
@@ -39,7 +43,7 @@ class FunctionDeclarations {
     }
 
     @Test
-    fun callStringMethod() {
+    fun `call String method`() {
         val result = stringMethod()
         assertThat(result).isEqualTo("something")
     }
@@ -55,7 +59,7 @@ class FunctionDeclarations {
     }
 
     @Test
-    fun callDefaultParameters() {
+    fun `call default parameters`() {
         val one = defaultParameters()
         assertThat(one).isEqualTo("something")
 
@@ -75,7 +79,7 @@ class FunctionDeclarations {
     }
 
     @Test
-    fun callNamedParameters() {
+    fun `call named parameters`() {
         val one = namedParameters("A", "B")
         assertThat(one).isEqualTo("AB")
 
@@ -95,7 +99,7 @@ class FunctionDeclarations {
     fun singleExpressionMethod(vararg list: Int) = list.map { it + 10 }.sum()
 
     @Test
-    fun callSingleExpressionMethod() {
+    fun `call single expression method`() {
         val result = singleExpressionMethod(1, 2, 3)
         assertThat(result).isEqualTo(36)
     }
@@ -113,7 +117,7 @@ class FunctionDeclarations {
     }
 
     @Test
-    fun callInnerFunction() {
+    fun `call inner function`() {
         val result = outerFunction("Kotlin")
         assertThat(result).isEqualTo("Kotlin? Kotlin!")
     }

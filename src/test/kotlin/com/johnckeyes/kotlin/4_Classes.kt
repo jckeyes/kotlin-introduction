@@ -43,7 +43,7 @@ class Classes {
     }
 
     @Test
-    fun complexThing() {
+    fun `complex thing`() {
         val bigThing = ComplexThing("big")
         assertThat(bigThing.name).isEqualTo("a big thing")
 
@@ -80,7 +80,7 @@ class Classes {
     }
 
     @Test
-    fun inheritedThing() {
+    fun `inherited thing`() {
         val baseThing: BaseThing = BaseThing("base")
         val inheritedThing: BaseThing = InheritedThing("base")
         assertThat(inheritedThing.value).isEqualTo(baseThing.value)
