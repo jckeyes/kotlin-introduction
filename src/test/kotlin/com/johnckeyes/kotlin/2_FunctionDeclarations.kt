@@ -90,13 +90,13 @@ class FunctionDeclarations {
 
 
     /**
-     * Method bodies can be written inline if they are a single expression
+     * Method bodies can skip the braces if they are a single expression
      */
-    fun inlineMethod(vararg list: Int) = list.map { it + 10 }.sum()
+    fun singleExpressionMethod(vararg list: Int) = list.map { it + 10 }.sum()
 
     @Test
-    fun callInlineMethod() {
-        val result = inlineMethod(1, 2, 3)
+    fun callSingleExpressionMethod() {
+        val result = singleExpressionMethod(1, 2, 3)
         assertThat(result).isEqualTo(36)
     }
 }
