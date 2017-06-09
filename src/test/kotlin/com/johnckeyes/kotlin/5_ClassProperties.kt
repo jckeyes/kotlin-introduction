@@ -24,7 +24,7 @@ class ClassProperties {
     }
 
     @Test
-    fun gettersAndSetters() {
+    fun `getters and setters`() {
         val thing = GettersAndSetters()
 
         thing.name = "Jeff"
@@ -44,7 +44,7 @@ class ClassProperties {
     class InlineProperty(val name: String, val size: Int)
 
     @Test
-    fun inlineProperties() {
+    fun `inline properties`() {
         val thing = InlineProperty("thing", 100)
         assertThat(thing.name).isEqualTo("thing")
         assertThat(thing.size).isEqualTo(100)
@@ -64,7 +64,7 @@ class ClassProperties {
     data class DataClass(val name: String, val size: Int)
 
     @Test
-    fun dataClass() {
+    fun `data class`() {
         val nonDataClass1 = InlineProperty("a", 1)
         val nonDataClass2 = InlineProperty("a", 1)
         assertThat(nonDataClass1).isNotEqualTo(nonDataClass2)

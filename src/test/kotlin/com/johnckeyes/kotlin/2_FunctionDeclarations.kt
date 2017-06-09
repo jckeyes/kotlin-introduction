@@ -22,8 +22,12 @@ class FunctionDeclarations {
         assertThat(param).isNotNull()
     }
 
+    /**
+     * You can include spaces in method names if you quote them with backticks
+     * This is very nice for tests (but should probably only be used there)
+     */
     @Test
-    fun callVoidMethod() {
+    fun `call void method`() {
         voidMethod()
         voidMethod("foo")
     }
@@ -39,7 +43,7 @@ class FunctionDeclarations {
     }
 
     @Test
-    fun callStringMethod() {
+    fun `call String method`() {
         val result = stringMethod()
         assertThat(result).isEqualTo("something")
     }
@@ -55,7 +59,7 @@ class FunctionDeclarations {
     }
 
     @Test
-    fun callDefaultParameters() {
+    fun `call default parameters`() {
         val one = defaultParameters()
         assertThat(one).isEqualTo("something")
 
@@ -75,7 +79,7 @@ class FunctionDeclarations {
     }
 
     @Test
-    fun callNamedParameters() {
+    fun `call named parameters`() {
         val one = namedParameters("A", "B")
         assertThat(one).isEqualTo("AB")
 
@@ -90,13 +94,31 @@ class FunctionDeclarations {
 
 
     /**
-     * Method bodies can be written inline if they are a single expression
+     * Method bodies can skip the braces if they are a single expression
      */
-    fun inlineMethod(vararg list: Int) = list.map { it + 10 }.sum()
+    fun singleExpressionMethod(vararg list: Int) = list.map { it + 10 }.sum()
 
     @Test
-    fun callInlineMethod() {
-        val result = inlineMethod(1, 2, 3)
+    fun `call single expression method`() {
+        val result = singleExpressionMethod(1, 2, 3)
         assertThat(result).isEqualTo(36)
+    }
+
+
+    /**
+     * Functions can have other functions nested inside them to encapsulate logic
+     * Inner functions have access to variables from the outer function
+     */
+    fun outerFunction(message: String) : String{
+        fun innerFunction(punctuation: Char): String {
+            return "$message$punctuation"
+        }
+        return "${innerFunction('?')} ${innerFunction('!')}"
+    }
+
+    @Test
+    fun `call inner function`() {
+        val result = outerFunction("Kotlin")
+        assertThat(result).isEqualTo("Kotlin? Kotlin!")
     }
 }

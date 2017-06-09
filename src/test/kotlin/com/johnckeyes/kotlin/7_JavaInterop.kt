@@ -6,7 +6,7 @@ import org.junit.Test
 class JavaInterop {
 
     @Test
-    fun usingAJavaClass() {
+    fun `using a Java class`() {
         val pojo = BoringOldPojo("bleh")
         assertThat(pojo.blah).isEqualTo("bleh")
 
