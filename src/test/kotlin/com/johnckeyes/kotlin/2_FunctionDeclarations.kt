@@ -121,4 +121,20 @@ class FunctionDeclarations {
         val result = outerFunction("Kotlin")
         assertThat(result).isEqualTo("Kotlin? Kotlin!")
     }
+
+
+    /**
+     * Unlike Java (any many other languages) Kotlin classes do not have static methods.
+     * Instead, you can use package level functions, which exist outside of a class.
+     */
+    @Test
+    fun `call package level function`() {
+        val result = packageLevelFunction();
+        assertThat(result).isEqualTo("I'm Free!")
+    }
+}
+
+
+fun packageLevelFunction(): String {
+    return "I'm Free!"
 }
