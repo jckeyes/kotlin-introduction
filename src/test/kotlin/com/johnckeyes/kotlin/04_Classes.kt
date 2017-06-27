@@ -62,30 +62,40 @@ class Classes {
      * be explicitly marked as open. As classes openness is not inherited by it's methods. Methods of an open
      * class that are intended to be overridden must also be marked as open.
      */
-    open class BaseThing(v: String) {
-        val value = v
+    open class Cat(val name: String) {
+        open fun meow(): String {
+            return "$name: meow"
+        }
     }
 
     /**
      * A subclass must use the default constructor of it's parent
      */
-    class InheritedThing(v: String) : BaseThing(v) {
+    class AngryCat(v: String) : Cat(v) {
+        override fun meow(): String {
+            return "MEOW!!"
+        }
     }
 
     /**
      * A subclass can change the signature of it's default constructor, but it is still required
      * to use the it's parent default constructor.
      */
-    class AnotherInheritedThing(): BaseThing("constant") {
+    class LaserCat(): Cat("LAZER CAT") {
+        override fun meow(): String {
+            return "$name PEW PEW"
+        }
     }
 
     @Test
     fun `inherited thing`() {
-        val baseThing: BaseThing = BaseThing("base")
-        val inheritedThing: BaseThing = InheritedThing("base")
-        assertThat(inheritedThing.value).isEqualTo(baseThing.value)
+        val cat: Cat = Cat("Sprinkles")
+        assertThat(cat.meow()).isEqualTo("Sprinkles: meow")
 
-        val anotherInheritedThing: BaseThing = AnotherInheritedThing()
-        assertThat(anotherInheritedThing.value).isEqualTo("constant")
+        val angryCat: Cat = AngryCat("Ms. Moppet")
+        assertThat(angryCat.meow()).isEqualTo("MEOW!!")
+
+        val laserCat: Cat = LaserCat()
+        assertThat(laserCat.meow()).isEqualTo("LAZER CAT PEW PEW")
     }
 }
