@@ -5,6 +5,11 @@ import org.junit.Test
 
 class JavaInterop {
 
+    /**
+     * Kotlin has 100% interoperability with Java. Notice that, the Java
+     * conventional getBlah() and setBlah() methods are transformed into
+     * .blah and .blah = value.
+     */
     @Test
     fun `using a Java class`() {
         val pojo = BoringOldPojo("bleh")
