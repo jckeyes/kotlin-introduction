@@ -12,11 +12,11 @@ cd kotlin-introduction
 ```
 Example code and descriptions can be found in `/src/test/kotlin/com/johnckeyes/kotlin`.
 
-If you'd like to make changes and run all the tests:
+If you'd like to make changes and run all the tests...
 ```bash
 ./gradlew test
 ```
-Or, if you'd like to run the tests on a specific file:
+Or, if you'd like to run the tests on a specific class...
 ```bash
 ./gradlew -Dtest.single=ClassToTest test
 ```
