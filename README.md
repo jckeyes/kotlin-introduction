@@ -1,6 +1,6 @@
 # Introduction to Kotlin [![Build Status](https://travis-ci.org/cah-johnkeyes/kotlin-introduction.svg?branch=master)](https://travis-ci.org/cah-johnkeyes/kotlin-introduction)
 
-A basic introduction to the fun the is the Kotlin programming language.
+A basic introduction to the fun the that is the Kotlin programming language.
 
 # What is Kotlin?
 Kotlin is a statically type language on the JVM. http://kotlinlang.org/
