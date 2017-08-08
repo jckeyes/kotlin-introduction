@@ -5,6 +5,17 @@ import java.util.*
 class VariableDeclarations {
 
     /**
+     * Using the keyword 'var' declares a variable as mutable. It can be changed
+     * at any point. It can not be null, however.
+     *
+     * Java: String mutableVariable = "yep";
+     */
+    var mutableVariable: String = "yep"
+
+
+
+
+    /**
      * Using the keyword 'val' declares a variable as immutable. Attempting
      * to change the value later will result in a compilation error.
      *
@@ -12,16 +23,6 @@ class VariableDeclarations {
      */
     val immutableVariable: String = "nope"
 
-
-
-
-    /**
-     * Using the keyword 'var' declares a variable as mutable. It can be changed
-     * at any point. It can not be null, however.
-     *
-     * Java: String mutableVariable = "yep";
-     */
-    var mutableVariable: String = "yep"
 
 
 

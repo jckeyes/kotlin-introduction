@@ -7,6 +7,9 @@ class FunctionDeclarations {
 
     /**
      * methods are declared with the 'fun' keyword.
+     *
+     * Java:
+     * public void voidMethod() { ... }
      */
     fun voidMethod() {
         assertThat(true).isTrue()
@@ -17,6 +20,9 @@ class FunctionDeclarations {
 
     /**
      * Similar to variables, parameters types are declared after the param name
+     *
+     * Java:
+     * public void voidMethod(String param) { ... }
      */
     fun voidMethod(param: String) {
         assertThat(param).isNotNull()
@@ -24,7 +30,7 @@ class FunctionDeclarations {
 
     /**
      * You can include spaces in method names if you quote them with backticks
-     * This is very nice for tests (but should probably only be used there)
+     * This is very nice, for in tests.
      */
     @Test
     fun `call void method`() {
@@ -37,6 +43,9 @@ class FunctionDeclarations {
 
     /**
      * Similar to variables, method types are declared after the method name
+     *
+     * Java:
+     * public String stringMethod() { ... }
      */
     fun stringMethod(): String {
         return "something"
@@ -53,6 +62,10 @@ class FunctionDeclarations {
 
     /**
      * Parameters can be give default values.
+     *
+     * Java:
+     * public String defaultParameters(String param) { ... }
+     * public String defaultParameters() { return defaultParameters("something"); }
      */
     fun defaultParameters(param: String = "something"): String {
         return param
@@ -73,6 +86,8 @@ class FunctionDeclarations {
     /**
      * When a method is called, parameters can be specified by name
      * allowing them to be provided in any order (see test)
+     *
+     * Java: ¯\_(ツ)_/¯
      */
     fun namedParameters(first: String, second: String): String {
         return first + second
@@ -95,6 +110,8 @@ class FunctionDeclarations {
 
     /**
      * Method bodies can skip the braces if they are a single expression
+     *
+     * * Java: ¯\_(ツ)_/¯
      */
     fun singleExpressionMethod(vararg list: Int) = list.map { it + 10 }.sum()
 
@@ -105,9 +122,13 @@ class FunctionDeclarations {
     }
 
 
+
+
     /**
      * Functions can have other functions nested inside them to encapsulate logic
      * Inner functions have access to variables from the outer function
+     *
+     * * Java: ¯\_(ツ)_/¯
      */
     fun outerFunction(message: String) : String{
         fun innerFunction(punctuation: Char): String {
@@ -123,9 +144,17 @@ class FunctionDeclarations {
     }
 
 
+
+
     /**
      * Unlike Java (any many other languages) Kotlin classes do not have static methods.
      * Instead, you can use package level functions, which exist outside of a class.
+     * There are ways to call a "static" method on a class
+     * (see https://kotlinlang.org/docs/reference/object-declarations.html). But this is
+     * not the preferred way.
+     *
+     * Java:
+     * public static String packageLevelFunction() { ... }
      */
     @Test
     fun `call package level function`() {

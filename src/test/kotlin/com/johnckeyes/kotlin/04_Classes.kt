@@ -81,7 +81,7 @@ class Classes {
      * A subclass can change the signature of it's default constructor, but it is still required
      * to use the it's parent default constructor.
      */
-    class LaserCat(): Cat("LAZER CAT") {
+    class LaserCat : Cat("LAZER CAT") {
         override fun meow(): String {
             return "$name PEW PEW"
         }
