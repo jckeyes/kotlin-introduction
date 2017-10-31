@@ -70,4 +70,16 @@ class VariableDeclarations {
      */
     val unboxedPrimitive: Int = 200
     val boxedPrimitive: Int? = null
+
+
+    /**
+     * Kotlin string interpolation
+     *
+     * Java:
+     * String.format("hello %s!", "Bob")
+     */
+    val name = "Bob"
+    val greeting = "hello $name!"
+
+
 }
