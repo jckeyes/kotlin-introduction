@@ -75,5 +75,12 @@ class ClassProperties {
 
         println(nonDataClass1)
         println(dataClass1)
+
+
+        val dataClass3 = dataClass1.copy(size=3)
+
+        assertThat(dataClass3).isNotEqualTo(dataClass1)
+        assertThat(dataClass3.name).isEqualTo(dataClass1.name)
+        assertThat(dataClass3.size).isEqualTo(3)
     }
 }
