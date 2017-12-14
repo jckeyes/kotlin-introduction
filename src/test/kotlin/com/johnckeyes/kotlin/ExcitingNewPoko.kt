@@ -1,3 +1,3 @@
-package com.johnckeyes.kotlin;
+package com.johnckeyes.kotlin
 
 data class ExcitingNewPoko(val yay: String)
