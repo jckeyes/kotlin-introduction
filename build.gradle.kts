@@ -10,10 +10,6 @@ buildscript {
     }
 }
 
-apply {
-    plugin("org.junit.platform.gradle.plugin")
-}
-
 plugins {
     java
     kotlin("jvm") version "1.2.10"
