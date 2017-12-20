@@ -9,9 +9,9 @@ class ClassProperties {
      * Kotlin has full support for property getters and setters.
      * Very similar to C#. No thanks to Java.
      */
-    class GettersAndSetters() {
+    class GettersAndSetters {
 
-        var _name: String = ""
+        private var _name: String = ""
 
         var name: String
             get() = _name
