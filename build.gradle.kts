@@ -1,8 +1,13 @@
+import org.gradle.api.internal.tasks.testing.JULRedirector
 import org.gradle.api.plugins.ExtensionAware
 
 import org.junit.platform.gradle.plugin.FiltersExtension
 import org.junit.platform.gradle.plugin.EnginesExtension
 import org.junit.platform.gradle.plugin.JUnitPlatformExtension
+
+import org.gradle.api.tasks.testing.Test
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
+import org.jetbrains.kotlin.gradle.plugin.KaptExtension
 
 buildscript {
     dependencies {
@@ -26,4 +31,12 @@ dependencies {
 
     testCompile("junit:junit:4.12")
     testCompile("org.assertj:assertj-core:3.5.2")
+}
+
+//(tasks["test"] as Test).environment.put("is_ci", "TRUE")
+
+tasks {
+    "test"(Test::class) {
+        environment.put("is_ci", properties["is_ci"] ?: "FALSE")
+    }
 }
