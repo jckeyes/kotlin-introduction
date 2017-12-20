@@ -17,7 +17,6 @@ class FunctionDeclarations {
 
 
 
-
     /**
      * Similar to variables, parameters types are declared after the param name
      *

@@ -8,7 +8,7 @@ class Classes {
     /**
      * Basic Kotlin class declarations are similar to Java. Methods and properties
      * are public by default. Also, as you may have noticed, Kotlin supports inner
-     * class similar to Java.
+     * classes similar to Java.
      */
     class Thing {
         fun value() = "something"

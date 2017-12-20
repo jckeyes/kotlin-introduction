@@ -1,3 +1,5 @@
+@file:Suppress("ConstantConditionIf")
+
 package com.johnckeyes.kotlin
 
 import org.assertj.core.api.Assertions.assertThat
@@ -12,9 +14,9 @@ class ControlFlow {
     @Test
     fun `conditional assignment`() {
         val itIsTrue = true
-        val value = if (itIsTrue) 100 else 200
+        val goesWithMac = if (itIsTrue) "cheese" else "not cheese"
 
-        assertThat(value).isEqualTo(100)
+        assertThat(goesWithMac).isEqualTo("cheese")
     }
 
 
@@ -27,15 +29,15 @@ class ControlFlow {
     fun `complex conditional assignment`() {
         val itIsTrue = true
         val itIsFalse = false
-        val value = if (itIsFalse) {
-            100
+        val whatsForDinner = if (itIsFalse) {
+            "some food"
         } else if (itIsFalse || itIsTrue) {
-            200
+            "all the food"
         } else {
-            300
+            "no food"
         }
 
-        assertThat(value).isEqualTo(200)
+        assertThat(whatsForDinner).isEqualTo("all the food")
     }
 
 
@@ -47,15 +49,15 @@ class ControlFlow {
     @Test
     fun `when expression`() {
         val num = 5
-        var result = ""
+        var factsAboutMe = "I like "
 
         when (num) {
-            1 -> result = "a"
-            5 -> result = "b"
-            else -> result = "c"
+            1 -> factsAboutMe += "tacos"
+            2 -> factsAboutMe += "hamburgers"
+            else -> factsAboutMe += "all the foods"
         }
 
-        assertThat(result).isEqualTo("b")
+        assertThat(factsAboutMe).isEqualTo("I like all the foods")
     }
 
 
@@ -65,14 +67,14 @@ class ControlFlow {
      * Similar to ifs, whens can be used in assignments
      */
     @Test
-    fun whenAssignment() {
+    fun `when assignment`() {
         val num = 5
-        val result = when (num) {
-            1 -> "a"
-            5 -> "b"
-            else -> "c"
+        val factAboutTacos = when (num) {
+            1 -> "they are pointless"
+            2 -> "they are inedible"
+            else -> "they are magic"
         }
 
-        assertThat(result).isEqualTo("b")
+        assertThat(factAboutTacos).isEqualTo("they are magic")
     }
 }
