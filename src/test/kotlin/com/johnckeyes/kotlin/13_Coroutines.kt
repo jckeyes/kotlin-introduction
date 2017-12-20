@@ -5,11 +5,18 @@ package com.johnckeyes.kotlin
 import kotlinx.coroutines.experimental.delay
 import kotlinx.coroutines.experimental.launch
 import kotlinx.coroutines.experimental.runBlocking
+import org.junit.Before
 import org.junit.Test
 import kotlin.concurrent.thread
 
 class Coroutines {
 
+    @Before
+    fun setup() {
+        // In case we just ran `launchALotOfThreads` we need to allow the
+        // offending threads to free up.
+        Thread.sleep(2000L)
+    }
 
     @Test(expected = OutOfMemoryError::class)
     fun launchALotOfThreads() {
