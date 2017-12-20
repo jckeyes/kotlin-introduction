@@ -18,13 +18,13 @@ import kotlin.system.measureTimeMillis
 class Coroutines {
 
     /***
-     * Have you ever tried to create 100,000 threads?
+     * Have you ever tried to create 500,000 threads?
      *
      * SPOILER ALERT! It doesn't end well.
      */
     @Test(expected = OutOfMemoryError::class)
     fun launchALotOfThreads() {
-        (0..100000).map {
+        (0..500000).map {
             thread(name = "swarm") {
                 sleep(1000)
                 print("ಠ_ಠ ")
