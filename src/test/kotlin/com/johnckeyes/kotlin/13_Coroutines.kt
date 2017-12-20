@@ -103,6 +103,6 @@ class Coroutines {
         }
     }
 
-    private val allowedError = Percentage.withPercentage(5.0)
+    private val allowedError = Percentage.withPercentage(20.0)
     private val runningOnCI = System.getenv("is_ci")?.toUpperCase() == "TRUE"
 }
