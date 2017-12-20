@@ -1,4 +1,4 @@
-# Introduction to Kotlin [![Build Status](https://travis-ci.org/cah-johnkeyes/kotlin-introduction.svg?branch=master)](https://travis-ci.org/cah-johnkeyes/kotlin-introduction)
+# Introduction to Kotlin [![Build Status](https://travis-ci.org/jckeyes/kotlin-introduction.svg?branch=master)](https://travis-ci.org/jckeyes/kotlin-introduction)
 
 A basic introduction to the fun the that is the Kotlin programming language.
 
