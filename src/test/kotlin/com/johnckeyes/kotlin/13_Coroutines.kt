@@ -8,7 +8,9 @@ import kotlinx.coroutines.experimental.launch
 import kotlinx.coroutines.experimental.runBlocking
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.data.Percentage
+import org.junit.Assume
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Test
 import java.lang.Thread.sleep
 import java.util.*
@@ -22,8 +24,10 @@ class Coroutines {
      *
      * SPOILER ALERT! It doesn't end well.
      */
-//    @Test(expected = OutOfMemoryError::class)
+    @Test(expected = OutOfMemoryError::class)
     fun launchALotOfThreads() {
+        Assume.assumeFalse("This test can not run on TravisCI", runningOnCI)
+
         (0..100000).map {
             thread(name = "swarm") {
                 sleep(1000)
@@ -48,21 +52,7 @@ class Coroutines {
     }
 
 
-    /***
-     * Even though [launchALotOfThreads] fails, it still leaves a LOT
-     * of active threads in its wake. If this is the case, we should
-     * allow them to finish before we continue on.
-     */
-    @Before
-    fun setup() {
-        if (Thread.activeCount() > 100) {
-            println("High thread count detected. Garbage output to follow.")
-            Thread.getAllStackTraces().keys.filter {
-                it.name.contains("swarm")
-            }.forEach { it.join() }
-            println("\nThread state is now normal!\n\n")
-        }
-    }
+
 
     private suspend fun getRandomFood(): String {
         delay(1000)
@@ -97,6 +87,22 @@ class Coroutines {
         }
     }
 
+    /***
+     * Even though [launchALotOfThreads] fails, it still leaves a LOT
+     * of active threads in its wake. If this is the case, we should
+     * allow them to finish before we continue on.
+     */
+    @Before
+    fun setup() {
+        if (Thread.activeCount() > 100) {
+            println("High thread count detected. Garbage output to follow.")
+            Thread.getAllStackTraces().keys.filter {
+                it.name.contains("swarm")
+            }.forEach { it.join() }
+            println("\nThread state is now normal!\n\n")
+        }
+    }
 
     private val allowedError = Percentage.withPercentage(5.0)
+    private val runningOnCI = System.getenv("is_ci")?.toUpperCase() == "TRUE"
 }
