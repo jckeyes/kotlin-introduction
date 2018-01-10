@@ -52,8 +52,15 @@ class Coroutines {
     }
 
 
-
-
+    /**
+     * Suspending functions are functions that may suspend the execution
+     * of a coroutine. They can only be called from a coroutine or another
+     * suspending functions.
+     *
+     * Technically, all coroutines are started with a suspending function.
+     * This is typically done by passing an anonymous function to one of
+     * the coroutine builders -- [run], [runBlocking], etc.
+     */
     private suspend fun getRandomFood(): String {
         delay(1000)
         val foods = listOf("Tacos", "Sushi", "Pizza", "Cheese",

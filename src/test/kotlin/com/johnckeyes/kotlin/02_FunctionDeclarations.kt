@@ -1,3 +1,5 @@
+@file:Suppress("MemberVisibilityCanPrivate")
+
 package com.johnckeyes.kotlin
 
 import org.assertj.core.api.Assertions.assertThat
@@ -6,52 +8,27 @@ import org.junit.Test
 class FunctionDeclarations {
 
     /**
-     * methods are declared with the 'fun' keyword.
-     *
-     * Java:
-     * public void voidMethod() { ... }
+     * Methods are declared with the 'fun' keyword.
+     * Similar to variables, parameters types are declared after the param name
+     * and return types are declared after the method name.
      */
     fun voidMethod() {
         assertThat(true).isTrue()
     }
 
-
-
-    /**
-     * Similar to variables, parameters types are declared after the param name
-     *
-     * Java:
-     * public void voidMethod(String param) { ... }
-     */
-    fun voidMethod(param: String) {
+    fun voidMethodWithParam(param: String) {
         assertThat(param).isNotNull()
     }
 
-    /**
-     * You can include spaces in method names if you quote them with backticks
-     * This is very nice, for in tests.
-     */
-    @Test
-    fun `call void method`() {
-        voidMethod()
-        voidMethod("foo")
-    }
-
-
-
-
-    /**
-     * Similar to variables, method types are declared after the method name
-     *
-     * Java:
-     * public String stringMethod() { ... }
-     */
     fun stringMethod(): String {
         return "something"
     }
 
     @Test
-    fun `call String method`() {
+    fun `call void method`() {
+        voidMethod()
+        voidMethodWithParam("foo")
+
         val result = stringMethod()
         assertThat(result).isEqualTo("something")
     }

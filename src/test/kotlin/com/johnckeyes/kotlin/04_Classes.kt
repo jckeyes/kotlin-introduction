@@ -1,3 +1,5 @@
+@file:Suppress("RedundantExplicitType", "unused")
+
 package com.johnckeyes.kotlin
 
 import org.assertj.core.api.Assertions.assertThat
@@ -24,22 +26,23 @@ class Classes {
 
 
     /**
-     * A constructor can be specified in the class declaration. Similar to Java, the resulting
+     * A constructor can be uspecified in the class declaration. Similar to Java, the resulting
      * class will not have an empty constructor.
      */
     class ComplexThing(adjective: String) {
 
         /**
-         * Additional convenience constructors can be added in the body of the class
+         * constructor arguments can be use when initializing properties of the class. They are
+         * not available for use within methods. If more complicated or non assigment logic is required,
+         * an 'init' block can be used.
+         */
+        val name = "a $adjective thing"
+
+        /**
+         * Additional convenience constructors can be added in the body of the classu
          */
         constructor(adjectiveOne: String, adjectiveTwo: String)
         : this("$adjectiveOne $adjectiveTwo")
-
-        /**
-         * constructor arguments can be use when initializing properties of the class. They are
-         * not available for use within methods.
-         */
-        val name = "a $adjective thing"
     }
 
     @Test
@@ -58,44 +61,44 @@ class Classes {
 
 
     /**
-     * Kotlin classes are closed (think final in Java) by default. If you want to extend a class, it must
+     * Kotlin classes are closed (think final in Java) by primary. If you want to extend a class, it must
      * be explicitly marked as open. As classes openness is not inherited by it's methods. Methods of an open
      * class that are intended to be overridden must also be marked as open.
      */
-    open class Cat(val name: String) {
-        open fun meow(): String {
-            return "$name: meow"
+    open class Sandwich(val contents: String) {
+        open fun describe(): String {
+            return "Mmmm, a $contents sandwich"
         }
     }
 
     /**
-     * A subclass must use the default constructor of it's parent
+     * A subclass must use the primary constructor of it's parent
      */
-    class AngryCat(v: String) : Cat(v) {
-        override fun meow(): String {
-            return "MEOW!!"
+    class ClubSandwich(contents: String, val layers: Int) : Sandwich(contents) {
+        override fun describe(): String {
+            return "Mmmm, a $layers layer $contents sandwich"
         }
     }
 
     /**
-     * A subclass can change the signature of it's default constructor, but it is still required
-     * to use the it's parent default constructor.
+     * A subclass can change the signature of it's primary constructor, but it is still required
+     * to use the it's parent primary constructor.
      */
-    class LaserCat : Cat("LAZER CAT") {
-        override fun meow(): String {
-            return "$name PEW PEW"
+    class PeanutButterJelly : Sandwich("peanut butter jelly") {
+        override fun describe(): String {
+            return "$contents time!".toUpperCase()
         }
     }
 
     @Test
     fun `inherited thing`() {
-        val cat: Cat = Cat("Sprinkles")
-        assertThat(cat.meow()).isEqualTo("Sprinkles: meow")
+        var myCat: Sandwich = Sandwich("fish")
+        assertThat(myCat.describe()).isEqualTo("Mmmm, a fish sandwich")
 
-        val angryCat: Cat = AngryCat("Ms. Moppet")
-        assertThat(angryCat.meow()).isEqualTo("MEOW!!")
+        myCat = ClubSandwich("turkey", 20)
+        assertThat(myCat.describe()).isEqualTo("Mmmm, a 20 layer turkey sandwich")
 
-        val laserCat: Cat = LaserCat()
-        assertThat(laserCat.meow()).isEqualTo("LAZER CAT PEW PEW")
+        myCat = PeanutButterJelly()
+        assertThat(myCat.describe()).isEqualTo("PEANUT BUTTER JELLY TIME!")
     }
 }
