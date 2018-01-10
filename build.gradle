@@ -22,3 +22,7 @@ dependencies {
     testCompile("junit:junit:4.12")
     testCompile("org.assertj:assertj-core:3.5.2")
 }
+
+test {
+    environment.put("is_ci", properties["is_ci"] ?: "FALSE")
+}
