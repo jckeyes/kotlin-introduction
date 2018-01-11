@@ -24,6 +24,12 @@ class FunctionDeclarations {
         return "something"
     }
 
+
+    /**
+     * Fun fact, method names can include spaces and special characters
+     * if you escape them with a `. This feature is best when saved
+     * for naming tests.
+     */
     @Test
     fun `call void method`() {
         voidMethod()
