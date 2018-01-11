@@ -1,4 +1,4 @@
-@file:Suppress("ConstantConditionIf")
+@file:Suppress("ConstantConditionIf", "MemberVisibilityCanPrivate")
 
 package com.johnckeyes.kotlin
 
@@ -8,8 +8,9 @@ import org.junit.Test
 class ControlFlow {
 
     /**
-     * Conditional expression (in this case an if) return a value. This means that they
-     * can be used to assign variables
+     * Conditional expression (in this case an if) return a value. The value returned
+     * by the statement is the result of the whichever block of code was execute.
+     * This simple if/else would be expressed as a ternary operator is other languages.
      */
     @Test
     fun `conditional assignment`() {
@@ -20,10 +21,9 @@ class ControlFlow {
     }
 
 
-
-
     /**
-     * Conditional assignments can be as complex as traditional if statements
+     * One benefit of conditional assignments is they can be much more complex without
+     * sacrificing readability.
      */
     @Test
     fun `complex conditional assignment`() {
@@ -41,11 +41,9 @@ class ControlFlow {
     }
 
 
-
-
     /**
      * When expressions are similar to switch statements in other languages
-     * Similar to ifs, whens can be used in assignments
+     * As with other control statements in Kotlin, they return a value.
      */
     @Test
     fun `when assignment`() {
@@ -61,5 +59,22 @@ class ControlFlow {
         }
 
         assertThat(factAboutTacos).isEqualTo("they are magic")
+    }
+
+
+    /**
+     * Combining control assignment with inline function bodies makes for
+     * very simple and expressive code.
+     */
+    fun whatMealIsIt(time: Int) = when {
+        time < 12 -> "breakfast"
+        time < 18 -> "lunch"
+        else -> "dinner"
+    }
+
+    @Test
+    fun `single line expressive function`() {
+        val meal = whatMealIsIt(14)
+        assertThat(meal).isEqualTo("lunch")
     }
 }

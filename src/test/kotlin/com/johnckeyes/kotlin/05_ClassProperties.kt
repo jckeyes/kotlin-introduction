@@ -7,7 +7,7 @@ class ClassProperties {
 
     /**
      * Kotlin has full support for property getters and setters.
-     * Very similar to C#. No thanks to Java.
+     * Very similar to C#.
      */
     class GettersAndSetters {
 
@@ -27,10 +27,10 @@ class ClassProperties {
     fun `getters and setters`() {
         val thing = GettersAndSetters()
 
-        thing.name = "Jeff"
+        thing.name = "Risotto"
 
-        assertThat(thing.name).isEqualTo("Jeff")
-        assertThat(thing.description).isEqualTo("A thing named Jeff")
+        assertThat(thing.name).isEqualTo("Risotto")
+        assertThat(thing.description).isEqualTo("A thing named Risotto")
     }
 
 
